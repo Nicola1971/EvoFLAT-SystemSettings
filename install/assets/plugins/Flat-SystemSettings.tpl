@@ -1,12 +1,12 @@
 /**
  * Flat-SystemSettings
  *
- * <strong>2.0 alpha</strong> Add EvoFLAT theme settings in system settings
+ * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 2.0 alpha
+ * @version 1.1 beta
  * @author Nicola Lambathakis (www.tattoocms.it) 
- * @internal @properties &settings=Settings;textarea;Flat Theme Main Color~flt_main-color||Main Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color &pname=title;text;
+ * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
  * @internal @events OnInterfaceSettingsRender,OnManagerMainFrameHeaderHTMLBlock
  * @internal @modx_category Admin
  * @internal @installset base, sample
@@ -29,7 +29,7 @@ $output .= '
 .hidden {display:none;}
 table.themeSettings {width:98%; margin:auto;}
 table.themeSettings th{height:20px}
-.displaytextsize {display:inline-block;vertical-align:top;padding: -4px 0 3px 8px ; margin-left:8px;}
+.displaytextsize, .displaymenusize {display:inline-block;vertical-align:top;padding: -4px 0 3px 8px ; margin-left:8px;}
 </style>
 <script type="text/javascript">
 					var lastImageCtrl;
@@ -80,9 +80,8 @@ foreach($settingsArr as $key => $st_row){
     $st_label_arr = explode('~',$st_row);
     $custom_st_label = trim($st_label_arr[0]);
     $custom_st_name = isset($st_label_arr[1]) ? $st_label_arr[1] : 'custom_st';
- $custom_st_value = isset($st_label_arr[1]) && isset($modx->config[$st_label_arr[1]]) ? trim($modx->config[$st_label_arr[1]]) : '';
-	// $custom_st_value = isset($st_label_arr[2]) ? trim($modx->config[$st_label_arr[2]]) : '';
- $output .= '<tr><td class="warning" nowrap="">'.htmlspecialchars($custom_st_label).' <br/><small>[('.$custom_st_name.')]  <span class="text-muted">saved color: '.$custom_st_value.'</span></small></td>
+    $custom_st_value = isset($st_label_arr[1]) && isset($modx->config[$st_label_arr[1]]) ? trim($modx->config[$st_label_arr[1]]) : '';
+    $output .= '<tr><td class="warning" nowrap="">'.htmlspecialchars($custom_st_label).' <br/><small>[('.$custom_st_name.')]  <span class="text-muted">saved color: '.$custom_st_value.'</span></small></td>
         <td><input class="setting_color" id="'.$custom_st_name.'" type="text" class="startEmpty" value="'.$custom_st_value.'" name="'.$custom_st_name.'" onchange="documentDirty=true;"></td></tr><tr><td colspan="2"><div class="split"/></td></tr>';
 }
 $output .= '</tbody></table></div>';
@@ -110,13 +109,23 @@ $displayLogoClass = 'hidden';
 if ($modx->config['flt_login_bgimage'] == '') {
 $displayBGClass = 'hidden';
 }
-if ($modx->config['flt_main_font_size'] == '' or $modx->config['flt_main_font_size'] == null) {
-$font_size = '0.8125';
+	
+if ($modx->config['flt_main_font_size'] == '' || $modx->config['flt_main_font_size'] == null) {
+$main_font_val = '0.8125';
 }
 else
  {
-$font_size = htmlspecialchars($modx->config['flt_main_font_size']);
+$main_font_val = ($modx->config['flt_main_font_size']);
 }
+	
+if ($modx->config['flt_menu_font_size'] == ''|| $modx->config['flt_menu_font_size'] == null) {
+$menu_font_val = '0.9';
+}
+else
+ {
+$menu_font_val = ($modx->config['flt_menu_font_size']);
+}
+	
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-font" aria-hidden="true"></i> Fonts</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
 $output .= '<tr>
@@ -135,15 +144,29 @@ $output .= '<tr>
 		';
 $output .= '<tr>
             <td nowrap class="warning">Font Size<br>
-                <small>[(flt_main_font_size)] <span class="text-muted">Saved Size: '.htmlspecialchars($modx->config['flt_main_font_size']).'</span></small>
+                <small>[(flt_main_font_size)] <span class="text-muted">Saved Size: '.$main_font_val.'</span></small>
             </td>
             <td>
-                <label><input class="rangeMainFonts" type="range" min="0.8125" max="1.2" step="0.0001"  id="flt_main_font_size" name="flt_main_font_size" value="'.$font_size.'" onchange="documentDirty=true;"></label><span class="displaytextsize">'.htmlspecialchars($modx->config['flt_main_font_size']).'rem</span>
+                <label><input class="rangeMainFonts" type="range" min="0.8125" value="'.$main_font_val.'" max="1.2" step="0.0001" id="flt_main_font_size" name="flt_main_font_size"  onchange="documentDirty=true;"></label><span class="displaytextsize">'.htmlspecialchars($modx->config['flt_main_font_size']).'rem</span>
             </td>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
             <td class="comment gfontsize">Change the Font Size in EvoFLAT</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>
+		';
+$output .= '<tr>
+            <td nowrap class="warning">Menu Font Size<br>
+                <small>[(flt_menu_font_size)] <span class="text-muted">Saved Size: '.$menu_font_val.'</span></small>
+            </td>
+            <td>
+                <label><input class="rangeMenuFonts" type="range" min="0.9" value="'.$main_font_val.'" max="2.8" step="0.0001" id="flt_menu_font_size" name="flt_menu_font_size" onchange="documentDirty=true;"></label><span class="displaymenusize">'.htmlspecialchars($modx->config['flt_menu_font_size']).'rem</span>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment mfontsize">Change the Menu Font Size (optional)</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
@@ -273,7 +296,7 @@ $(\'.setting_color\').spectrum({
  allowEmpty: true,
  palette: [
         ["#0e80cb", "#0275d8", "#1792fd", "#272c33", "#3c434e", "#383f48", "#404040", "#DFDFDF", "#FAFAFA", "#fff"],
- 	    ["#741B47","#134F5C","#2980B9","#8E44AD","#34495E","#D35400","#C0392B","#b45f06","#351c75","#4F5458"]
+ 	    ["#741B47","#134F5C","#16A085","#8E44AD","#34495E","#D35400","#C0392B","#b45f06","#351c75","#007C49"]
     ]
 });
       $(function(){
@@ -288,6 +311,7 @@ $(\'.setting_color\').spectrum({
           // set family on description 
           $(\'.gfonttype\').css(\'font-family\', font[0]);
 		  $(\'.gfontsize\').css(\'font-family\', font[0]);
+		  $(\'.mfontsize\').css(\'font-family\', font[0]);
         });
       });
 	$(\'input.rangeMainFonts\').on(\'change\', function () {
@@ -295,6 +319,12 @@ $(\'.setting_color\').spectrum({
 	$(\'.gfontsize\').css(\'font-size\', v + \'rem\')
 	$(\'.gfonttype\').css(\'font-size\', v + \'rem\')
     $(\'.displaytextsize\').html(v + \'rem\');
+});
+
+	$(\'input.rangeMenuFonts\').on(\'change\', function () {
+    var v = $(this).val();
+	$(\'.mfontsize\').css(\'font-size\', v + \'rem\')
+    $(\'.displaymenusize\').html(v + \'rem\');
 });
 });
 </script>';
