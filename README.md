@@ -1,5 +1,5 @@
 # EvoFLAT-SystemSettings alpha 2
-EvoFLAT SystemSettings control panel
+[EvoFLAT](https://github.com/Nicola1971/EvoFLAT) SystemSettings control panel
 
 ![1](https://user-images.githubusercontent.com/7342798/32838376-006ddfb6-ca11-11e7-8cce-ffb4cf701082.png)
 ![2](https://user-images.githubusercontent.com/7342798/32838378-02a04e4a-ca11-11e7-9ab0-c101fb38dc0a.png)
