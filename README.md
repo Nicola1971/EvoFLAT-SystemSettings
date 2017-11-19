@@ -1,8 +1,7 @@
 # EvoFLAT-SystemSettings 
 [EvoFLAT](https://github.com/Nicola1971/EvoFLAT) SystemSettings control panel
 
-## EvoFLAT Control Panel
-[EvoFLAT-SystemSettings Plugin](https://github.com/Nicola1971/EvoFLAT-SystemSettings)
+## Features
 
 - **Colors**: Change FLAT theme colors (main color, menu, tabs, tree links..)
 - **Fonts**: Change default font to google fonts and change font size
