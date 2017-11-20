@@ -8,6 +8,8 @@
 - **Advanced Settings**: Show/hide Header and login logo; Add custom logo to login; add a background image to login page.
 - **Custom Styles**: 	Add your custom styles to change EvoFlat Manager appearance 
 
+![flat-system-theme](https://user-images.githubusercontent.com/7342798/33016221-fae57ae6-cded-11e7-8488-33cfeb62ca72.png)
+
 # EvoFLAT SystemSettings control panel
 
 ![1](https://user-images.githubusercontent.com/7342798/32838376-006ddfb6-ca11-11e7-8cce-ffb4cf701082.png)
