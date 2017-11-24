@@ -19,12 +19,7 @@
 ![5](https://user-images.githubusercontent.com/7342798/33207316-7ad25be4-d10d-11e7-9bb0-0fef252f233b.png)
 ![6](https://user-images.githubusercontent.com/7342798/33207317-7aea49fc-d10d-11e7-896a-6ab6e02ac6a7.png)
 
-#### Q: TinyMCE settings is displayed inside the EvoFLAT-SystemSettings tab
 
-R: 
-- Go to **Elements > Plugins > Edit Plugin Execution Order > OnInterfaceSettingsRender** 
-- Drag **EvoFLAT-SystemSettings** Plugin BELOW **TinyMCE** 
-- Save
 
 
 
