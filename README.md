@@ -12,10 +12,12 @@
 
 # EvoFLAT SystemSettings control panel
 
-![1](https://user-images.githubusercontent.com/7342798/32838376-006ddfb6-ca11-11e7-8cce-ffb4cf701082.png)
-![2](https://user-images.githubusercontent.com/7342798/32838378-02a04e4a-ca11-11e7-9ab0-c101fb38dc0a.png)
-![3](https://user-images.githubusercontent.com/7342798/32838381-047668c6-ca11-11e7-8afd-b9836bb827e7.png)
-![4](https://user-images.githubusercontent.com/7342798/32838385-0638b36c-ca11-11e7-9325-d938d396b320.png)
+![1](https://user-images.githubusercontent.com/7342798/33207310-7a6e6d1e-d10d-11e7-9b02-61f6fbe61059.png)
+![2](https://user-images.githubusercontent.com/7342798/33207312-7a8673dc-d10d-11e7-8b1a-86b819fe8204.png)
+![3](https://user-images.githubusercontent.com/7342798/33207314-7a9e55e2-d10d-11e7-9cd9-8182f873e8e4.png)
+![4](https://user-images.githubusercontent.com/7342798/33207315-7ab7f560-d10d-11e7-9d9f-e1f3d7f4da4c.png)
+![5](https://user-images.githubusercontent.com/7342798/33207316-7ad25be4-d10d-11e7-9bb0-0fef252f233b.png)
+![6](https://user-images.githubusercontent.com/7342798/33207317-7aea49fc-d10d-11e7-896a-6ab6e02ac6a7.png)
 
 #### Q: TinyMCE settings is displayed inside the EvoFLAT-SystemSettings tab
 
