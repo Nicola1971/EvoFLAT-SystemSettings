@@ -4,13 +4,13 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.1 beta
+ * @version 1.2 beta
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
- * @internal @events OnInterfaceSettingsRender,OnManagerMainFrameHeaderHTMLBlock
+ * @internal @events OnMiscSettingsRender,OnManagerMainFrameHeaderHTMLBlock
  * @internal @modx_category Admin
  * @internal @installset base, sample
- * @lastupdate  17-11-2017
+ * @lastupdate  24-11-2017
  */
 // get language
 
@@ -20,7 +20,7 @@ if($manager_theme == "EvoFLAT") {
 
 $e = &$modx->Event;
 $output = "";
-if ($e->name == 'OnInterfaceSettingsRender'){
+if ($e->name == 'OnMiscSettingsRender'){
 $settingsArr = !empty($settings) ? explode('||',$settings) : array('Example custom setting~custom_st_example');
 $fname = !empty($pname) ? $pname : 'EvoFlat Theme';
 ;
