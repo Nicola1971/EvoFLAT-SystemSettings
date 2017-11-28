@@ -12,14 +12,12 @@
 
 # EvoFLAT SystemSettings control panel
 
-![1](https://user-images.githubusercontent.com/7342798/33207310-7a6e6d1e-d10d-11e7-9b02-61f6fbe61059.png)
-![2](https://user-images.githubusercontent.com/7342798/33207312-7a8673dc-d10d-11e7-8b1a-86b819fe8204.png)
-![3](https://user-images.githubusercontent.com/7342798/33207314-7a9e55e2-d10d-11e7-9cd9-8182f873e8e4.png)
-![4](https://user-images.githubusercontent.com/7342798/33207315-7ab7f560-d10d-11e7-9d9f-e1f3d7f4da4c.png)
-![5](https://user-images.githubusercontent.com/7342798/33207316-7ad25be4-d10d-11e7-9bb0-0fef252f233b.png)
-![6](https://user-images.githubusercontent.com/7342798/33207317-7aea49fc-d10d-11e7-896a-6ab6e02ac6a7.png)
-
-
+![1](https://user-images.githubusercontent.com/7342798/33321218-309a66c6-d445-11e7-9204-a5924a13be41.png)
+![2](https://user-images.githubusercontent.com/7342798/33321219-30b790de-d445-11e7-991a-9e92aff8464b.png)
+![3](https://user-images.githubusercontent.com/7342798/33321220-30d14fba-d445-11e7-8a0a-e2f2af128c5e.png)
+![4](https://user-images.githubusercontent.com/7342798/33321221-30ee4674-d445-11e7-85a2-efc92762dd3c.png)
+![5](https://user-images.githubusercontent.com/7342798/33321222-31171fa4-d445-11e7-8fc5-4b847aac08cb.png)
+![6](https://user-images.githubusercontent.com/7342798/33321223-313051d6-d445-11e7-87ce-0309f654ca9a.png)
 
 
 
