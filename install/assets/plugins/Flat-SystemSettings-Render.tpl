@@ -117,12 +117,22 @@ if($modx->config['flt_menu_font_size'] == '' or $modx->config['flt_menu_font_siz
 else { 
 $menu_font_size = '--main-menu-font-size:'.$modx->config['flt_menu_font_size'].'rem;'; 
 } 
+
+if($modx->config['flt_dark_side'] == '1' ) { 
+$dark_side = '<script>
+$(document).ready(function(){
+var body = document.getElementsByTagName(\'body\')[0];
+body.classList.add(\'darkSide\');
+});
+</script>'; 
+} 
 //end vars
 $e = &$modx->Event;
 switch($e->name) {
 case 'OnManagerTopPrerender':	
 $MainFlatSettingsOutput = '
 <!--- OnManagerTopPrerender --->
+'.$dark_side.'
 '.$importFont.'
 <style>
 body {

@@ -4,13 +4,13 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.2 beta
+ * @version 1.3 RC1
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
  * @internal @events OnMiscSettingsRender,OnManagerMainFrameHeaderHTMLBlock
  * @internal @modx_category Admin
  * @internal @installset base, sample
- * @lastupdate  24-11-2017
+ * @lastupdate  28-11-2017
  */
 // get language
 
@@ -86,6 +86,16 @@ foreach($settingsArr as $key => $st_row){
         <td><input class="setting_color" id="'.$custom_st_name.'" type="text" class="startEmpty" value="'.$custom_st_value.'" name="'.$custom_st_name.'" onchange="documentDirty=true;"></td></tr><tr><td colspan="2"><div class="split"/></td></tr>';
 }
 $output .= '</tbody></table></div>';
+if ($modx->config['flt_dark_side'] == '0' or $modx->config['flt_dark_side'] == '') {
+$yes_dark_side = '';
+$no_dark_side = 'checked="checked"';
+}
+else
+ {
+$yes_dark_side = 'checked="checked"';
+$no_dark_side = '';
+}
+	
 if ($modx->config['flt_show_evo_logo'] == '1' or $modx->config['flt_show_evo_logo'] == '') {
 $yes_show_logo = 'checked="checked"';
 $no_show_logo = '';
@@ -174,6 +184,25 @@ $output .= '<tr>
 $output .= '</tbody></table></div>';	
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-sliders" aria-hidden="true"></i> Advanced Settings</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
+$output .= '<tr>
+            <td nowrap class="warning">Dark Sidebar<br>
+                <small>[(flt_dark_side)]</small>
+            </td>
+            <td>
+                <label><input type="radio" name="flt_dark_side" value="1" '.$yes_dark_side.' />
+                    '.$_lang['yes'].'</label>
+                <br />
+                <label><input type="radio" name="flt_dark_side" value="0" '.$no_dark_side.' />
+                    '.$_lang['no'].'
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment">Always show Dark Sidebar</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>
+		';
 $output .= '<tr>
             <td nowrap class="warning">Show Header Logo<br>
                 <small>[(flt_show_evo_logo)]</small>
