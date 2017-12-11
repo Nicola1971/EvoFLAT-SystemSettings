@@ -4,13 +4,17 @@
  * Render EvoFLAT customizations and css variable
  *
  * @category plugin
- * @version 1.1 beta
+ * @version 1.1 RC
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties 
  * @internal @events OnManagerLoginFormPrerender,OnManagerMainFrameHeaderHTMLBlock,OnManagerTopPrerender
  * @internal @modx_category Admin
  * @internal @installset base, sample
- * @lastupdate  17-11-2017
+ * @internal    @disabled 0
+ * @lastupdate  11-12-2017
+ * @documentation Requirements: This plugin requires Evolution 1.4 or later
+ * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
+ * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
 
 global $modx;

@@ -10,10 +10,14 @@
  * @internal @events OnMiscSettingsRender,OnManagerMainFrameHeaderHTMLBlock
  * @internal @modx_category Admin
  * @internal @installset base, sample
- * @lastupdate  28-11-2017
+ * @internal    @disabled 0
+ * @lastupdate  11-12-2017
+ * @documentation Requirements: This plugin requires Evolution 1.4 or later
+ * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
+ * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
-// get language
 
+// get language
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
