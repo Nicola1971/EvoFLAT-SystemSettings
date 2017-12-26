@@ -176,7 +176,7 @@ $output .= '<tr>
                 <small>[(flt_menu_font_size)] <span class="text-muted">Saved Size: '.$menu_font_val.'</span></small>
             </td>
             <td>
-                <label><input class="rangeMenuFonts" type="range" min="0.9" value="'.$main_font_val.'" max="2.8" step="0.0001" id="flt_menu_font_size" name="flt_menu_font_size" onchange="documentDirty=true;"></label><span class="displaymenusize">'.htmlspecialchars($modx->config['flt_menu_font_size']).'rem</span>
+                <label><input class="rangeMenuFonts" type="range" min="0.9" value="'.$menu_font_val.'" max="2.8" step="0.0001" id="flt_menu_font_size" name="flt_menu_font_size" onchange="documentDirty=true;"></label><span class="displaymenusize">'.htmlspecialchars($modx->config['flt_menu_font_size']).'rem</span>
             </td>
         </tr>
         <tr>
