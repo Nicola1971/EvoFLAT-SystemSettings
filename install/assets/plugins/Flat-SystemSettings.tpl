@@ -4,14 +4,14 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.3 RC1
+ * @version 1.3 RC2
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
- * @internal @events OnMiscSettingsRender,OnManagerMainFrameHeaderHTMLBlock
+ * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  11-12-2017
+ * @lastupdate  30-12-2017
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
@@ -308,8 +308,7 @@ $output .= '<tr>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>';
 $output .= '</tbody></table></div></div>';
-}
-if ($e->name == 'OnManagerMainFrameHeaderHTMLBlock'){
+
 $cssOutput .='
 <link rel="stylesheet" type="text/css" href="../assets/plugins/flatsystem/fontselect/styles/fontselect-alternate.css" />
 <link rel="stylesheet" href="media/style/common/spectrum/spectrum.css" />
