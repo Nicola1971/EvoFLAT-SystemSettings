@@ -4,15 +4,15 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.3 RC2
+ * @version 1.1 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
  * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  30-12-2017
- * @documentation Requirements: This plugin requires Evolution 1.4 or later
+ * @lastupdate  19-01-2017
+ * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
@@ -124,7 +124,15 @@ $displayLogoClass = 'hidden';
 if ($modx->config['flt_login_bgimage'] == '') {
 $displayBGClass = 'hidden';
 }
-	
+if ($modx->config['flt_show_loader'] == '1' or $modx->config['flt_show_loader'] == '') {
+$yes_show_loader = 'checked="checked"';
+$no_show_loader = '';
+}
+else
+ {
+$yes_show_loader = '';
+$no_show_loader = 'checked="checked"';
+}	
 if ($modx->config['flt_main_font_size'] == '' || $modx->config['flt_main_font_size'] == null) {
 $main_font_val = '0.8125';
 }
@@ -276,6 +284,25 @@ $output .= '<tr>
             <td class="comment">Add Background Image to the Login page</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>';
+$output .= '<tr>
+            <td nowrap class="warning">Show Preloader<br>
+                <small>[(flt_show_loader)]</small>
+            </td>
+            <td>
+                <label><input type="radio" name="flt_show_loader" value="1" '.$yes_show_loader.' />
+                    '.$_lang['yes'].'</label>
+                <br />
+                <label><input type="radio" name="flt_show_loader" value="0" '.$no_show_loader.' />
+                    '.$_lang['no'].'
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment">Show Preloader animation</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>
+		';
 $output .= '</tbody></table></div>';
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-css3" aria-hidden="true"></i> Custom Styles</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';

@@ -4,15 +4,15 @@
  * Render EvoFLAT customizations and css variable
  *
  * @category plugin
- * @version 1.1 RC
+ * @version 1.1 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties 
  * @internal @events OnManagerLoginFormPrerender,OnManagerMainFrameHeaderHTMLBlock,OnManagerTopPrerender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  11-12-2017
- * @documentation Requirements: This plugin requires Evolution 1.4 or later
+ * @lastupdate  19-01-2018
+ * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
@@ -28,6 +28,9 @@ $hideLogo ='
 }
 if($modx->config['flt_show_login_logo'] == "0") {
 $hideLoginLogo = 'img#logo {display:none;}'; 
+}
+if($modx->config['flt_show_loader'] == "0") {
+$hideLoader = '#mainloader{display:none !important;}'; 
 }
 if ($modx->config['flt_login_clogo'] !== null) {
 $logocustom = '<a class="logo" href="../" title="'.$sitename.'">
@@ -156,6 +159,7 @@ body {
   '.$dark_tabs.'
   }
 '.$hideLogo.' 
+'.$hideLoader.'
 '.$custom_head_styles.'
 </style>
 ';
