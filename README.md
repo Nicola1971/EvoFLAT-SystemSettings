@@ -1,11 +1,11 @@
-# EvoFLAT-SystemSettings 
+# EvoFLAT-SystemSettings 1.1
 [EvoFLAT](https://github.com/Nicola1971/EvoFLAT) SystemSettings control panel
 
 ## Features
 
 - **Colors**: Change FLAT theme colors (main color, menu, tabs, tree links..)
 - **Fonts**: Change default font to google fonts and change font size
-- **Advanced Settings**: Show/hide Header and login logo; Add custom logo to login; add a background image to login page.
+- **Advanced Settings**: Show/hide Header and login logo; Add custom logo to login; add a background image to login page, Show/hide Preloader;.
 - **Custom Styles**: 	Add your custom styles to change EvoFlat Manager appearance 
 
 ![flat-system-theme](https://user-images.githubusercontent.com/7342798/33016221-fae57ae6-cded-11e7-8488-33cfeb62ca72.png)
