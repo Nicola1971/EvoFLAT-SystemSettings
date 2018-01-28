@@ -24,7 +24,7 @@ if($manager_theme == "EvoFLAT") {
 $version = '1.2';
 $e = &$modx->Event;
 $output = "";
-$settings='Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
+$settings='EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
 if ($e->name == 'OnMiscSettingsRender'){
 $settingsArr = !empty($settings) ? explode('||',$settings) : array('Example custom setting~custom_st_example');
 $tabname = !empty($pname) ? $pname : 'EvoFlat Theme';
