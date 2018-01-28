@@ -16,11 +16,12 @@
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
+
 // get language
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
-
+$version = '1.2';
 $e = &$modx->Event;
 $output = "";
 $settings='Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
@@ -34,6 +35,7 @@ $output .= '
 table.themeSettings {width:98%; margin:auto;}
 table.themeSettings th{height:20px}
 .displaytextsize, .displaymenusize {display:inline-block;vertical-align:top;padding: -4px 0 3px 8px ; margin-left:8px;}
+.pull-right {display:block;float:right;}
 </style>
 <script type="text/javascript">
 					var lastImageCtrl;
@@ -333,8 +335,10 @@ $output .= '<tr>
             <td class="comment">Add your custom styles to change EvoFlat Login page appearance </td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>';
-$output .= '</tbody></table></div></div>';
-
+$output .= '</tbody></table></div></div>
+<div class="pull-right" style="margin-right:12px;">
+<span class="text-muted small"><i class="fa fa-paint-brush"></i> EvoFLAT Settings v.'.$version.'</span>
+  </div>';
 $cssOutput .='
 <link rel="stylesheet" type="text/css" href="../assets/plugins/flatsystem/fontselect/styles/fontselect-alternate.css" />
 <link rel="stylesheet" href="media/style/common/spectrum/spectrum.css" />
