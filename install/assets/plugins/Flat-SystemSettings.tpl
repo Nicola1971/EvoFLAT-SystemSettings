@@ -4,19 +4,18 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.1 PL
+ * @version 1.2 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
- * @internal @properties &settings=Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color &pname=title;text;
+ * @internal @properties &pname=Settings Tab Title;text;EvoFlat Theme;
  * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  19-01-2017
+ * @lastupdate  28-01-2018
  * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
-
 // get language
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
@@ -24,9 +23,10 @@ if($manager_theme == "EvoFLAT") {
 
 $e = &$modx->Event;
 $output = "";
+$settings='Settings;textarea;EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
 if ($e->name == 'OnMiscSettingsRender'){
 $settingsArr = !empty($settings) ? explode('||',$settings) : array('Example custom setting~custom_st_example');
-$fname = !empty($pname) ? $pname : 'EvoFlat Theme';
+$tabname = !empty($pname) ? $pname : 'EvoFlat Theme';
 $output .= '</td></tr></table></div>';
 $output .= '
 <style>
@@ -77,7 +77,7 @@ table.themeSettings th{height:20px}
     						}
 							</script>';
 
-$output .= '<div style="display: block;" class="tab-page" id="tabPage4b"><h2 class="tab"><i class="fa fa-paint-brush" aria-hidden="true"></i> '.$fname.' </h2><script type="text/javascript">tpSettings.addTabPage( document.getElementById( "tabPage4b" ) );</script>';
+$output .= '<div style="display: block;" class="tab-page" id="tabPage4b"><h2 class="tab"><i class="fa fa-paint-brush" aria-hidden="true"></i> '.$tabname.' </h2><script type="text/javascript">tpSettings.addTabPage( document.getElementById( "tabPage4b" ) );</script>';
 $output .= '<div class="tab-pane" id="tab-pane-1"><div class="tab-page"><h2 class="tab"><i class="fa fa-paint-brush" aria-hidden="true"></i> Colors</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
 foreach($settingsArr as $key => $st_row){
