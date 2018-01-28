@@ -27,7 +27,6 @@ $output = "";
 if ($e->name == 'OnMiscSettingsRender'){
 $settingsArr = !empty($settings) ? explode('||',$settings) : array('Example custom setting~custom_st_example');
 $fname = !empty($pname) ? $pname : 'EvoFlat Theme';
-;
 $output .= '</td></tr></table></div>';
 $output .= '
 <style>
