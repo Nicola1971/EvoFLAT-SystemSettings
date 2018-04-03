@@ -4,14 +4,14 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.2 PL
+ * @version 1.3 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &pname=Settings Tab Title;text;EvoFlat Theme;
  * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  28-01-2018
+ * @lastupdate  03-04-2018
  * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
@@ -21,7 +21,7 @@
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
-$version = '1.2';
+$version = '1.3';
 $e = &$modx->Event;
 $output = "";
 $settings='EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
@@ -355,7 +355,7 @@ $(\'.setting_color\').spectrum({
  showPalette: true,
  showInitial: true,
  showInput: true,
- showSelectionPalette: true, // true by default
+ showSelectionPalette: true, 
  allowEmpty: true,
  palette: [
         ["#0e80cb", "#0275d8", "#1792fd", "#272c33", "#3c434e", "#383f48", "#404040", "#DFDFDF", "#FAFAFA", "#fff"],
@@ -365,13 +365,8 @@ $(\'.setting_color\').spectrum({
       $(function(){
         $(\'#flt_main_font\').fontselect().change(function(){
          documentDirty=true;
-          // replace + signs with spaces for css
           var font = $(this).val().replace(/\+/g, \' \');
-          
-          // split font into family and weight
           font = font.split(\':\');
-          
-          // set family on description 
           $(\'.gfonttype\').css(\'font-family\', font[0]);
 		  $(\'.gfontsize\').css(\'font-family\', font[0]);
 		  $(\'.mfontsize\').css(\'font-family\', font[0]);
@@ -379,14 +374,14 @@ $(\'.setting_color\').spectrum({
       });
 	$(\'input.rangeMainFonts\').on(\'change\', function () {
     var v = $(this).val();
-	$(\'.gfontsize\').css(\'font-size\', v + \'rem\')
-	$(\'.gfonttype\').css(\'font-size\', v + \'rem\')
+	$(\'.gfontsize\').css(\'font-size\', v + \'rem\');
+	$(\'.gfonttype\').css(\'font-size\', v + \'rem\');
     $(\'.displaytextsize\').html(v + \'rem\');
 });
 
 	$(\'input.rangeMenuFonts\').on(\'change\', function () {
     var v = $(this).val();
-	$(\'.mfontsize\').css(\'font-size\', v + \'rem\')
+	$(\'.mfontsize\').css(\'font-size\', v + \'rem\');
     $(\'.displaymenusize\').html(v + \'rem\');
 });
 });
