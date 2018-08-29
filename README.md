@@ -1,4 +1,4 @@
-# EvoFLAT-SystemSettings 1.1
+# EvoFLAT-SystemSettings 1.4
 [EvoFLAT](https://github.com/Nicola1971/EvoFLAT) SystemSettings control panel
 
 ## Features
