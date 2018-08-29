@@ -4,14 +4,14 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.3 PL
+ * @version 1.4 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &pname=Settings Tab Title;text;EvoFlat Theme;
  * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  03-04-2018
+ * @lastupdate  29-08-2018
  * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
@@ -21,7 +21,7 @@
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
-$version = '1.3';
+$version = '1.4';
 $e = &$modx->Event;
 $output = "";
 $settings='EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
@@ -91,14 +91,14 @@ foreach($settingsArr as $key => $st_row){
         <td><input class="setting_color" id="'.$custom_st_name.'" type="text" class="startEmpty" value="'.$custom_st_value.'" name="'.$custom_st_name.'" onchange="documentDirty=true;"></td></tr><tr><td colspan="2"><div class="split"/></td></tr>';
 }
 $output .= '</tbody></table></div>';
-if ($modx->config['flt_dark_side'] == '0' or $modx->config['flt_dark_side'] == '') {
-$yes_dark_side = '';
-$no_dark_side = 'checked="checked"';
+if ($modx->config['flt_dark_menu'] == '0' or $modx->config['flt_dark_menu'] == '') {
+$yes_dark_menu = '';
+$no_dark_menu = 'checked="checked"';
 }
 else
  {
-$yes_dark_side = 'checked="checked"';
-$no_dark_side = '';
+$yes_dark_menu = 'checked="checked"';
+$no_dark_menu = '';
 }
 	
 if ($modx->config['flt_show_evo_logo'] == '1' or $modx->config['flt_show_evo_logo'] == '') {
@@ -119,12 +119,21 @@ else
 $yes_show_Loginlogo = '';
 $no_show_Loginlogo = 'checked="checked"';
 }
-if ($modx->config['flt_login_clogo'] == '') {
-$displayLogoClass = 'hidden';
-}
+
 if ($modx->config['flt_login_bgimage'] == '') {
 $displayBGClass = 'hidden';
 }
+	
+if ($modx->config['flt_loginbox_style'] == 'dark_loginbox' or $modx->config['flt_loginbox_style'] == '') {
+$dark_loginbox = 'checked="checked"';
+$light_loginbox = '';
+}
+else
+{
+$light_loginbox = 'checked="checked"';
+$dark_loginbox = '';
+}
+	
 if ($modx->config['flt_show_loader'] == '1' or $modx->config['flt_show_loader'] == '') {
 $yes_show_loader = 'checked="checked"';
 $no_show_loader = '';
@@ -198,21 +207,40 @@ $output .= '</tbody></table></div>';
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-sliders" aria-hidden="true"></i> Advanced Settings</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
 $output .= '<tr>
-            <td nowrap class="warning">Dark Sidebar<br>
-                <small>[(flt_dark_side)]</small>
+            <td nowrap class="warning">Show Preloader<br>
+                <small>[(flt_show_loader)]</small>
             </td>
             <td>
-                <label><input type="radio" name="flt_dark_side" value="1" '.$yes_dark_side.' />
+                <label><input type="radio" name="flt_show_loader" value="1" '.$yes_show_loader.' />
                     '.$_lang['yes'].'</label>
                 <br />
-                <label><input type="radio" name="flt_dark_side" value="0" '.$no_dark_side.' />
+                <label><input type="radio" name="flt_show_loader" value="0" '.$no_show_loader.' />
                     '.$_lang['no'].'
                 </label>
             </td>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
-            <td class="comment">Always show Dark Sidebar</td>
+            <td class="comment">Show Preloader animation</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>
+		';
+$output .= '<tr>
+            <td nowrap class="warning">Dark Menu for Dark Theme<br>
+                <small>[(flt_dark_menu)]</small>
+            </td>
+            <td>
+                <label><input type="radio" name="flt_dark_menu" value="1" '.$yes_dark_menu.' />
+                    '.$_lang['yes'].'</label>
+                <br />
+                <label><input type="radio" name="flt_dark_menu" value="0" '.$no_dark_menu.' />
+                    '.$_lang['no'].'
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment">Show a Dark Menu, instead the colored menu, when you switch to the Dark Theme</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
@@ -253,57 +281,27 @@ $output .= '<tr>
             <td class="comment">Show EVO Logo in the Login form</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>';
+
 $output .= '<tr>
-            <td nowrap class="warning">Custom Login Logo<br>
-                <small>[(flt_login_clogo)]</small>
+            <td nowrap class="warning">Loginbox Style<br>
+                <small>[(flt_loginbox_style)]</small>
             </td>
             <td>
-                <input id="flt_login_clogo" maxlength="255" style="width: 250px;" name="flt_login_clogo" value="'.htmlspecialchars($modx->config['flt_login_clogo']).'" onchange="documentDirty=true;" type="text"><input type="button" value="Insert" onclick="BrowseServer(\'flt_login_clogo\')"">
-		            </td>
-        				</tr>
-					<tr>
-						<td></td><td align="left"><img class="'.$displayLogoClass.'" name="flt_login_clogo" width="150" src="'.MODX_SITE_URL. $modx->config['flt_login_clogo'].'" /></td>
-					</tr>
-       		 <tr>
-            <td width="200">&nbsp;</td>
-            <td class="comment">Add Brand Logo to the Login page</td>
-        </tr>
-        <tr><td colspan="2"><div class="split"/></td></tr>';
-$output .= '<tr>
-            <td nowrap class="warning">Login Background Image<br>
-                <small>[(flt_login_bgimage)]</small>
-            </td>
-            <td>
-                <input id="flt_login_bgimage" maxlength="255" style="width: 250px;" name="flt_login_bgimage" value="'.htmlspecialchars($modx->config['flt_login_bgimage']).'" onchange="documentDirty=true;" type="text"><input type="button" value="Insert" onclick="BrowseServer(\'flt_login_bgimage\')"">
-		            </td>
-        </tr>
-		<tr>
-						<td></td><td align="left"><img class="'.$displayBGClass.'" name="flt_login_bgimage" width="150" src="'.MODX_SITE_URL. $modx->config['flt_login_bgimage'].'" /></td>
-					</tr>
-        <tr>
-            <td width="200">&nbsp;</td>
-            <td class="comment">Add Background Image to the Login page</td>
-        </tr>
-        <tr><td colspan="2"><div class="split"/></td></tr>';
-$output .= '<tr>
-            <td nowrap class="warning">Show Preloader<br>
-                <small>[(flt_show_loader)]</small>
-            </td>
-            <td>
-                <label><input type="radio" name="flt_show_loader" value="1" '.$yes_show_loader.' />
-                    '.$_lang['yes'].'</label>
+                <label><input type="radio" name="flt_loginbox_style" value="dark_loginbox" '.$dark_loginbox.' />
+                    Dark</label>
                 <br />
-                <label><input type="radio" name="flt_show_loader" value="0" '.$no_show_loader.' />
-                    '.$_lang['no'].'
+                <label><input type="radio" name="flt_loginbox_style" value="light_loginbox" '.$light_loginbox.' />
+                    Light
                 </label>
             </td>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
-            <td class="comment">Show Preloader animation</td>
+            <td class="comment">Select loginbox style. Actual style: '.htmlspecialchars($modx->config['flt_loginbox_style']).'</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
+
 $output .= '</tbody></table></div>';
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-css3" aria-hidden="true"></i> Custom Styles</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';

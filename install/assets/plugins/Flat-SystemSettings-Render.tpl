@@ -4,14 +4,14 @@
  * Render EvoFLAT customizations and css variable
  *
  * @category plugin
- * @version 1.1 PL
+ * @version 1.4 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties 
  * @internal @events OnManagerLoginFormPrerender,OnManagerMainFrameHeaderHTMLBlock,OnManagerTopPrerender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  19-01-2018
+ * @lastupdate  29-08-2018
  * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
@@ -23,8 +23,8 @@ $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
 if($modx->config['flt_show_evo_logo'] == "0") {
 $hideLogo ='
-#mainMenu #bars:after{display:none!important;}
-#mainMenu #bars{ margin-right: 0px!important; }';
+#mainMenu #nav #site::before  {display:none!important;}
+#mainMenu #nav #site a { margin-left: 0px!important; }';
 }
 if($modx->config['flt_show_login_logo'] == "0") {
 $hideLoginLogo = 'img#logo {display:none;}'; 
@@ -125,13 +125,8 @@ else {
 $menu_font_size = '--main-menu-font-size:'.$modx->config['flt_menu_font_size'].'rem;'; 
 } 
 
-if($modx->config['flt_dark_side'] == '1' ) { 
-$dark_side = '<script>
-$(document).ready(function(){
-var body = document.getElementsByTagName(\'body\')[0];
-body.classList.add(\'darkSide\');
-});
-</script>'; 
+if($modx->config['flt_dark_menu'] == '1' ) { 
+$dark_menu = '.dark #mainMenu { background-color: #272c33 !important;}'; 
 } 
 //end vars
 $e = &$modx->Event;
@@ -139,7 +134,6 @@ switch($e->name) {
 case 'OnManagerTopPrerender':	
 $MainFlatSettingsOutput = '
 <!--- OnManagerTopPrerender --->
-'.$dark_side.'
 '.$importFont.'
 <style>
 body {
@@ -161,6 +155,7 @@ body {
 '.$hideLogo.' 
 '.$hideLoader.'
 '.$custom_head_styles.'
+'.$dark_menu.'
 </style>
 ';
 break;
@@ -188,18 +183,7 @@ body {
 </style>
 ';
 break;
-
 case 'OnManagerLoginFormPrerender':
-if ($modx->config['flt_login_bgimage'] == null || $modx->config['flt_login_bgimage'] == '') {
-$Login_BgI = '';
-}  else {
-$Login_BgI = ' 
-body div.page, body.dark div.page{background: url("../'.$modx->config['flt_login_bgimage'].'") no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;}';
-} 
 $LoginFlatSettingsOutput = '
 '.$importFont.'
 <style>
@@ -210,10 +194,8 @@ body {
   '.$main_color.'
   }
 '.$hideLoginLogo.'
-'.$Login_BgI.'
 '.$custom_login_styles.'
 </style>
-'.$logocustom.'
 ';
     break;
 }
