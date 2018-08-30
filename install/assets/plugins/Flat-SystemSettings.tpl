@@ -4,7 +4,7 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.4 PL
+ * @version 1.4.1 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &pname=Settings Tab Title;text;EvoFlat Theme;
  * @internal @events OnMiscSettingsRender
@@ -21,7 +21,7 @@
 global $_lang;
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
-$version = '1.4';
+$version = '1.4.1';
 $e = &$modx->Event;
 $output = "";
 $settings='EvoFLAT Theme Main Color~flt_main-color||Menu Color~flt_main-menu-color||Item Tree Color~flt_item-tree-color||Dark Item Tree Color~flt_dark-item-tree-color||Selected tab color~flt_selected-tabs-color||Dark selected tabs color~flt_dark-selected-tabs-color||Links color~flt_links-color||Links hover color~flt_links-hover-color||Dark links hover color~flt_dark-links-hover-color';
@@ -165,6 +165,11 @@ else
  {
 $menu_font_val = ($modx->config['flt_menu_font_size']);
 }
+if($modx->config['flt_loginbox_opacity'] == '' or $modx->config['flt_loginbox_opacity'] == null)
+{ $loginbox_opacity = '0.85'; }
+else { 
+$loginbox_opacity = ''.htmlspecialchars($modx->config['flt_loginbox_opacity']).''; 
+} 
 	
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-font" aria-hidden="true"></i> Fonts</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
@@ -327,7 +332,20 @@ $output .= '<tr>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
-
+$output .= '<tr>
+            <td nowrap class="warning">Loginbox Opacity<br>
+                <small>[(flt_loginbox_opacity)] <span class="text-muted">Saved Opacity: '.$loginbox_opacity.'</span></small>
+            </td>
+            <td>
+                <label><input class="rangeloginboxopacity" type="range" min="0.00" value="'.$loginbox_opacity.'" max="1.0" step="0.05" id="flt_loginbox_opacity" name="flt_loginbox_opacity" onchange="documentDirty=true;"></label> Opacity: <span class="displayloginboxopacity">'.$loginbox_opacity.'</span>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment mLoginOpacity">Change the Loginbox Opacity (optional)</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>
+		';
 $output .= '</tbody></table></div>';
 $output .= '<div class="tab-page"><h2 class="tab"><i class="fa fa-css3" aria-hidden="true"></i> Custom Styles</h2>';
 $output .= '<table class="themeSettings" border="0" cellpadding="3" cellspacing="0"><thead><th width="25%"></th><th></th></thead><tbody>';
@@ -407,6 +425,10 @@ $(\'.setting_color\').spectrum({
     var v = $(this).val();
 	$(\'.mfontsize\').css(\'font-size\', v + \'rem\');
     $(\'.displaymenusize\').html(v + \'rem\');
+});
+	$(\'input.rangeloginboxopacity\').on(\'change\', function () {
+    var v = $(this).val();
+    $(\'.displayloginboxopacity\').html(v);
 });
 });
 </script>';

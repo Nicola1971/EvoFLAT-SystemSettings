@@ -4,7 +4,7 @@
  * Render EvoFLAT customizations and css variable
  *
  * @category plugin
- * @version 1.4 PL
+ * @version 1.4.1 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties 
  * @internal @events OnManagerLoginFormPrerender,OnManagerMainFrameHeaderHTMLBlock,OnManagerTopPrerender
