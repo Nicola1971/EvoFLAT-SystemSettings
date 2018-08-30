@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal    @disabled 0
  * @lastupdate  29-08-2018
- * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
+ * @documentation Requirements: This plugin requires Evolution 1.4.3 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
@@ -27,7 +27,15 @@ $hideLogo ='
 #mainMenu #nav #site a { margin-left: 0px!important; }';
 }
 if($modx->config['flt_show_login_logo'] == "0") {
-$hideLoginLogo = 'img#logo {display:none;}'; 
+$hideLoginLogo = 'div.form-group--logo {display:none!important;}'; 
+}
+if($modx->config['flt_show_login_bg'] == "0") {
+$hideLoginbg = 'body,
+        body.lightness,
+        body.light,
+        body.dark,
+        body.darkness {
+          background-image: none !important;'; 
 }
 if($modx->config['flt_show_loader'] == "0") {
 $hideLoader = '#mainloader{display:none !important;}'; 
@@ -194,6 +202,7 @@ body {
   '.$main_color.'
   }
 '.$hideLoginLogo.'
+'.$hideLoginbg.'
 '.$custom_login_styles.'
 </style>
 ';

@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal    @disabled 0
  * @lastupdate  29-08-2018
- * @documentation Requirements: This plugin requires Evolution 1.4 or later and EvoFLAT manager theme
+ * @documentation Requirements: This plugin requires Evolution 1.4.3 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
  */
@@ -120,8 +120,15 @@ $yes_show_Loginlogo = '';
 $no_show_Loginlogo = 'checked="checked"';
 }
 
-if ($modx->config['flt_login_bgimage'] == '') {
-$displayBGClass = 'hidden';
+
+if ($modx->config['flt_show_login_bg'] == '1' or $modx->config['flt_show_login_bg'] == '') {
+$yes_show_Loginbg = 'checked="checked"';
+$no_show_Loginbg = '';
+}
+else
+ {
+$yes_show_Loginbg = '';
+$no_show_Loginbg = 'checked="checked"';
 }
 	
 if ($modx->config['flt_loginbox_style'] == 'dark_loginbox' or $modx->config['flt_loginbox_style'] == '') {
@@ -259,7 +266,7 @@ $output .= '<tr>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
-            <td class="comment">Show EVO Header Menu Logo</td>
+            <td class="comment">Show EVOLUTION Header Menu Logo</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
@@ -278,7 +285,26 @@ $output .= '<tr>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
-            <td class="comment">Show EVO Logo in the Login form</td>
+            <td class="comment">Show Logo in the Login form</td>
+        </tr>
+        <tr><td colspan="2"><div class="split"/></td></tr>';
+	
+$output .= '<tr>
+            <td nowrap class="warning">Show Login Background Image<br>
+                <small>[(flt_show_login_bg)]</small>
+            </td>
+            <td>
+                <label><input type="radio" name="flt_show_login_bg" value="1" '.$yes_show_Loginbg.' />
+                    '.$_lang['yes'].'</label>
+                <br />
+                <label><input type="radio" name="flt_show_login_bg" value="0" '.$no_show_Loginbg.' />
+                    '.$_lang['no'].'
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td width="200">&nbsp;</td>
+            <td class="comment">Show a backgroung image in the Login page<br/> </td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>';
 
@@ -297,7 +323,7 @@ $output .= '<tr>
         </tr>
         <tr>
             <td width="200">&nbsp;</td>
-            <td class="comment">Select loginbox style. Actual style: '.htmlspecialchars($modx->config['flt_loginbox_style']).'</td>
+            <td class="comment">Select loginbox style.</td>
         </tr>
         <tr><td colspan="2"><div class="split"/></td></tr>
 		';
