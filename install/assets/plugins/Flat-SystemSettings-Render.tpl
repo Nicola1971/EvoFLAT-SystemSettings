@@ -4,14 +4,14 @@
  * Render EvoFLAT customizations and css variable
  *
  * @category plugin
- * @version 1.4.1 PL
+ * @version 1.4.2 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties 
  * @internal @events OnManagerLoginFormPrerender,OnManagerMainFrameHeaderHTMLBlock,OnManagerTopPrerender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  29-08-2018
+ * @lastupdate  06-09-2018
  * @documentation Requirements: This plugin requires Evolution 1.4.3 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
@@ -33,8 +33,8 @@ if($modx->config['flt_show_login_bg'] == "0") {
 $hideLoginbg = 'body,
         body.lightness,
         body.light,
-        body.dark,
-        body.darkness {
+        body.darkness,
+        body.dark {
           background-image: none !important;'; 
 }
 if($modx->config['flt_show_loader'] == "0") {
@@ -72,10 +72,10 @@ $tree_color = '--item-tree-color:'.$modx->config['flt_item-tree-color'].';
 '; 
 } else { $tree_color = ''; }
 	
-if($modx->config['flt_dark-item-tree-color'] !== '') { 
-$tree_dark_color = '--dark-item-tree-color:'.$modx->config['flt_dark-item-tree-color'].';
+if($modx->config['flt_darkness-item-tree-color'] !== '') { 
+$tree_darkness_color = '--darkness-item-tree-color:'.$modx->config['flt_darkness-item-tree-color'].';
 '; 
-} else { $tree_dark_color = ''; }
+} else { $tree_darkness_color = ''; }
 	
 //tabs	
 if($modx->config['flt_selected-tabs-color'] !== '') { 
@@ -88,15 +88,15 @@ $light_tabs = '--selected-tabs-color:'.$modx->config['flt_main-color'].';';
 }
 else { $light_tabs = ''; }
 	
-if($modx->config['flt_dark-selected-tabs-color'] !== '') { 
-$dark_tabs = '--dark-selected-tabs-color:'.$modx->config['flt_dark-selected-tabs-color'].';
+if($modx->config['flt_darkness-selected-tabs-color'] !== '') { 
+$darkness_tabs = '--darkness-selected-tabs-color:'.$modx->config['flt_darkness-selected-tabs-color'].';
 '; 
 }
 else
-if($modx->config['flt_dark-selected-tabs-color'] == '' && $modx->config['flt_main-color'] !== '') { 
-$dark_tabs = '--dark-selected-tabs-color:'.$modx->config['flt_main-color'].';'; 
+if($modx->config['flt_darkness-selected-tabs-color'] == '' && $modx->config['flt_main-color'] !== '') { 
+$darkness_tabs = '--darkness-selected-tabs-color:'.$modx->config['flt_main-color'].';'; 
 }
-else { $dark_tabs = ''; }
+else { $darkness_tabs = ''; }
 	
 //Links
 if($modx->config['flt_links-color'] !== '') { 
@@ -109,10 +109,10 @@ $links_hover_color = '--links-hover-color:'.$modx->config['flt_links-hover-color
 '; 
 } else { $links_hover_color = ''; }
 
-if($modx->config['flt_dark-links-hover-color'] !== '') { 
-$dark_links_hover_color = '--dark-links-hover-color:'.$modx->config['flt_dark-links-hover-color'].';
+if($modx->config['flt_darkness-links-hover-color'] !== '') { 
+$darkness_links_hover_color = '--darkness-links-hover-color:'.$modx->config['flt_darkness-links-hover-color'].';
 '; 
-} else { $dark_links_hover_color = ''; }
+} else { $darkness_links_hover_color = ''; }
 
 //fonts
 if($modx->config['flt_main_font'] !== '') { 
@@ -133,8 +133,8 @@ else {
 $menu_font_size = '--main-menu-font-size:'.$modx->config['flt_menu_font_size'].'rem;'; 
 } 
 
-if($modx->config['flt_dark_menu'] == '1' ) { 
-$dark_menu = '.dark #mainMenu { background-color: #272c33 !important;}'; 
+if($modx->config['flt_darkness_menu'] == '1' ) { 
+$darkness_menu = '.darkness #mainMenu { background-color: #272c33 !important;}'; 
 } 
 //end vars
 $e = &$modx->Event;
@@ -147,7 +147,7 @@ $MainFlatSettingsOutput = '
 body {
   '.$links_color.'
   '.$links_hover_color.'
-  '.$dark_links_hover_color.'
+  '.$darkness_links_hover_color.'
   '.$main_font.'
   '.$main_font_size.'
   '.$menu_color.'
@@ -155,15 +155,15 @@ body {
   '.$main_color.'
 /* tree */
   '.$tree_color.'
-  '.$tree_dark_color.'
+  '.$tree_darkness_color.'
   /* tabs */
   '.$light_tabs.'
-  '.$dark_tabs.'
+  '.$darkness_tabs.'
   }
 '.$hideLogo.' 
 '.$hideLoader.'
 '.$custom_head_styles.'
-'.$dark_menu.'
+'.$darkness_menu.'
 </style>
 ';
 break;
@@ -175,17 +175,17 @@ $MainFlatSettingsOutput = '
 body {
   '.$links_color.'
   '.$links_hover_color.'
-  '.$dark_links_hover_color.'
+  '.$darkness_links_hover_color.'
   '.$main_font.'
   '.$main_font_size.'
   '.$menu_color.'
   '.$main_color.'
 /* tree */
   '.$tree_color.'
-  '.$tree_dark_color.'
+  '.$tree_darkness_color.'
  /* tabs */
   '.$light_tabs.'
-  '.$dark_tabs.'
+  '.$darkness_tabs.'
   }
 '.$custom_head_styles.'
 </style>

@@ -4,14 +4,14 @@
  * Add EvoFLAT theme settings in system settings
  *
  * @category plugin
- * @version 1.4.1 PL
+ * @version 1.4.2 PL
  * @author Nicola Lambathakis (www.tattoocms.it) 
  * @internal @properties &pname=Settings Tab Title;text;EvoFlat Theme;
  * @internal @events OnMiscSettingsRender
  * @internal @modx_category Admin
  * @internal @installset base, sample
  * @internal    @disabled 0
- * @lastupdate  29-08-2018
+ * @lastupdate  06-09-2018
  * @documentation Requirements: This plugin requires Evolution 1.4.3 or later and EvoFLAT manager theme
  * @documentation https://github.com/Nicola1971/EvoFLAT-SystemSettings/
  * @reportissues https://github.com/Nicola1971/EvoFLAT-SystemSettings/issues
